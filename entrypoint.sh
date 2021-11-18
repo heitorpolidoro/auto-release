@@ -1,9 +1,12 @@
 #!/bin/bash
-echo "::group::Create Release"
 set -e
-git status
+echo "::group::GitHub authentication"
+echo "$INPUT_PERSONAL_ACCESS_TOKEN"
 echo "$INPUT_PERSONAL_ACCESS_TOKEN" | gh auth login --with-token
 gh auth status
+echo "::endgroup::"
+
+echo "::group::Create Release"
 echo "Estou no entrypoint"
 echo "::endgroup::"
 
