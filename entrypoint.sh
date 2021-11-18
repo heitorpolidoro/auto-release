@@ -1,7 +1,15 @@
 #!/bin/bash
 set -e
 pwd
-cat .config/gh/hosts.yml
+ls -a
+cd ..
+pwd
+ls -a
+cd ..
+pwd
+ls -a
+
+sleep 10
 echo "::group::GitHub authentication"
 echo "$INPUT_PERSONAL_ACCESS_TOKEN" | gh auth login --with-token
 echo "::endgroup::"
