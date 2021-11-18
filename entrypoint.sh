@@ -1,13 +1,9 @@
 #!/bin/bash
 set -e
 pwd
-ls -a
-cd ..
-pwd
-ls -a
-cd ..
-pwd
-ls -a
+ls -a /github/workspace/.github
+ls -a /github/home
+ls -a /github
 
 sleep 10
 echo "::group::GitHub authentication"
