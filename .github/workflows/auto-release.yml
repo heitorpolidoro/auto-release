@@ -15,4 +15,4 @@ jobs:
       - name: Create GitHub Release
         uses: ./
         with:
-          personal-access-token: ${{ secrets.PAT }}
+          personal_access_token: ${{ secrets.PAT }}

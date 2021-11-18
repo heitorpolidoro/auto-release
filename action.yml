@@ -6,7 +6,7 @@ inputs:
     description: "Github Personal access token"
     required: true
 
-  version-file:
+  version_file:
     description: "File were the version is"
     required: false
 
