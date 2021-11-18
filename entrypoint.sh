@@ -9,7 +9,9 @@ echo "::endgroup::"
 
 if [[ -n "$INPUT_ALLOWED_USERS" ]] && [[ ! " ${INPUT_ALLOWED_USERS[*]} " =~ " ${GITHUB_USER} " ]]
 then
-  echo 1
+  echo nao pode
+else
+  echo pode
 fi
 echo "::group::Create Release"
 echo "Estou no entrypoint"
