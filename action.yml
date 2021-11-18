@@ -2,7 +2,7 @@ name: "Auto Release"
 description: "Create a release automatically"
 
 inputs:
-  personal-access-token:
+  personal_access_token:
     description: "Github Personal access token"
     required: true
 
