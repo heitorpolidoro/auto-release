@@ -1,7 +1,8 @@
-FROM alpine/git
+FROM alpine
 
 RUN apk add --no-cache \
-    bash
+    git \
+    github-cli
 
 COPY entrypoint.sh /entrypoint.sh
 
