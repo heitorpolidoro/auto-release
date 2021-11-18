@@ -6,6 +6,10 @@ inputs:
     description: "Github Personal access token"
     required: true
 
+  allowed_users:
+    description: "Allowed users to generate auto release"
+    required: false
+
   version_file:
     description: "File were the version is"
     required: false

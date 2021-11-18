@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
 echo "::group::GitHub authentication"
-echo "$INPUT_PERSONAL_ACCESS_TOKEN"
 echo "$INPUT_PERSONAL_ACCESS_TOKEN" | gh auth login --with-token
-gh auth status
+git config -l
 echo "::endgroup::"
 
 echo "::group::Create Release"
