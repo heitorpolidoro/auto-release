@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 echo "::group::GitHub authentication"
+echo "$INPUT_PERSONAL-ACCESS-TOKEN"
 echo "$INPUT_PERSONAL-ACCESS-TOKEN" | gh auth login --with-token
 gh auth status
 echo "::endgroup::"
