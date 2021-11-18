@@ -1,4 +1,4 @@
-name: Create Release
+name: Create GitHub Release
 
 on:
   push:
@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: ./
+      - name: Create GitHub Release
+        uses: ./
         with:
           personal-access-token: ${{ secrets.PAT }}
