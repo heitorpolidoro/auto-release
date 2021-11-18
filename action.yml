@@ -6,6 +6,10 @@ inputs:
     description: "Github Personal access token"
     required: true
 
+  version-file:
+    description: "File were the version is"
+    required: false
+
 runs:
   using: "docker"
   image: "Dockerfile"
