@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine/git
 
 RUN apk add --no-cache \
     bash
