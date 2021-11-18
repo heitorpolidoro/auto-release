@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: DEBUG
+        run: ls -la
+
       - name: Teste
         uses: ./
         with:
