@@ -2,7 +2,7 @@
 set -e
 echo "::group::GitHub authentication"
 echo "$INPUT_PERSONAL_ACCESS_TOKEN" | gh auth login --with-token
-git config -l
+cat .config/gh/hosts.yml
 echo "::endgroup::"
 
 echo "::group::Create Release"
