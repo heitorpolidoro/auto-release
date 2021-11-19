@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    types:
+      - closed
 
 jobs:
   create-release:
@@ -16,4 +19,4 @@ jobs:
         uses: ./
         with:
           personal_access_token: ${{ secrets.PAT }}
-          allowed_users: heitorpolidoroooo heitorpolidoro
+          allowed_users: heitorpolidorooo
