@@ -1,4 +1,12 @@
 # Autorelease GitHub Action
+[![Create GitHub Release](https://github.com/heitorpolidoro/auto-release/actions/workflows/auto-release.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/auto-release.yml)
+![GitHub last commit](https://img.shields.io/github/last-commit/heitorpolidoro/auto-release)
+
+[![Latest](https://img.shields.io/github/release/heitorpolidoro/auto-release.svg?label=latest)](https://github.com/heitorpolidoro/auto-release/releases/latest)
+![GitHub Release Date](https://img.shields.io/github/release-date/heitorpolidoro/auto-release)
+
+![GitHub](https://img.shields.io/github/license/heitorpolidoro/auto-release)
+
 Action to create a release automatically
 
 ### Usage
