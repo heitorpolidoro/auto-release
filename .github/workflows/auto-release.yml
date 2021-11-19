@@ -16,4 +16,4 @@ jobs:
         uses: ./
         with:
           personal_access_token: ${{ secrets.PAT }}
-          allowed_users: heitorpolidoroooo
+          allowed_users: heitorpolidoroooo heitorpolidoro
