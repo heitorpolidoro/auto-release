@@ -7,9 +7,14 @@ Action to create a release automatically
       - uses: actions/checkout@v2
 
       - name: Create GitHub Release
-        uses: heitorpolidoro/auto-release@v0
+        uses: heitorpolidoro/auto-release@v1
         with:
           personal_access_token: ${{ secrets.PAT }}
-          allowed_users: heitorpolidoro
-          version_file: version.txt
+```
+Must have a file named `VERSION` in root with the project version in `MAJOR.MINOR.BUGFIX` format.
+#### Optional parameters
+```yaml
+allowed_users: List of github users allowed to trigger auto-release.
+version_file: Path to Version file
+update_released_versions: Update vX and vX.Y releases. (create or delete and recreate)
 ```
