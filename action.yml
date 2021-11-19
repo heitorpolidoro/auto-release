@@ -13,6 +13,12 @@ inputs:
   version_file:
     description: "File were the version is"
     required: false
+    default: "VERSION"
+
+  update_released_versions:
+    description: "Update vN version if a new vN.X.Y version is released"
+    required: false
+    default: false
 
 runs:
   using: "docker"
