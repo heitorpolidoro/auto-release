@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-
+echo "$GITHUB_ACTOR"
 echo "::group::GitHub authentication"
 echo "$INPUT_PERSONAL_ACCESS_TOKEN" | gh auth login --with-token
 GITHUB_USER=$(gh auth status 2>&1 | grep Logged | sed 's/.* as \(.*\) (.*/\1/')
