@@ -57,7 +57,6 @@ else
     else
       echo "::group::Creating version $vXY"
     fi
-    fi
     gh release create "$vXY"
   fi
 fi
