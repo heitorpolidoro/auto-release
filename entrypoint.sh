@@ -36,8 +36,7 @@ else
 #  gh release create "v$NEW_RELEASE"
   echo "::endgroup::"
   set -x
-  echo "$INPUT_UPDATE_RELEASED_VERSION"
-  if [[ "$INPUT_UPDATE_RELEASED_VERSION" == "true" ]]
+  if [[ "$INPUT_UPDATE_RELEASED_VERSIONS" == "true" ]]
   then
     IFS=. read -r -a array <<< "$NEW_RELEASE"
     vX="v${array[0]}"
