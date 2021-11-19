@@ -1,6 +1,10 @@
 name: "Auto Release based on version file"
 description: "Create a release automatically"
 
+branding:
+  color: blue
+  icon: tag
+
 inputs:
   personal_access_token:
     description: "Github Personal access token"
