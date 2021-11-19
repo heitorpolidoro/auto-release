@@ -1,6 +1,15 @@
 #!/bin/bash
+remove_release()
+{
+  set -x
+   git tag -d $1
+   git push --delete origin $1
+   gh release delete $1 -y
+}
+
 BOLD='\x1b[1m'
 NORMAL="\x1b[0m"
+
 set -e
 if [[ -n "$INPUT_ALLOWED_USERS" ]] && [[ ! " ${INPUT_ALLOWED_USERS[*]} " =~ " ${GITHUB_ACTOR} " ]]
 then
@@ -14,18 +23,36 @@ else
   echo "::group::Creating Release v$NEW_RELEASE"
     git fetch --prune --tags --quiet
 #    git fetch --prune --unshallow --tags --quiet
-    LAST_RELEASE=$(git tag --list | sort | tail -1)
+    LAST_RELEASE=$(git tag --sort=v:refname | sort | tail -1)
     if [[ -n "$LAST_RELEASE" ]]
     then
       echo "Last Release: $LAST_RELEASE"
-      if [[ "$LAST_RELEASE" == "v$NEW_RELEASE" ]]
+      if [[ -n $(git tag --list "v$NEW_RELEASE") ]]
       then
         >&2 echo -e "Version$BOLD v$NEW_RELEASE$NORMAL already exists"
         exit 1
       fi
     fi
 
-    gh release create "v$NEW_RELEASE"
+#  gh release create "v$NEW_RELEASE"
   echo "::endgroup::"
-fi
+  if [[ "$INPUT_UPDATE_RELEASED_VERSION" == "true" ]]
+  then
+    IFS=. read -r -a array <<< "$NEW_RELEASE"
+    vX="v${array[0]}"
+    vXY=$(IFS=. ;echo "v${array[*]:0:2}")
 
+    if [[ -n $(git tag --list "$vX") ]]
+    then
+      git tag --list "$vX"
+      remove_release $vX
+    fi
+#    gh release create "$vX"
+
+    if [[ -n $(git tag --list "$vXY") ]]
+    then
+      remove_release $vXY
+    fi
+#    gh release create "$vXY"
+  fi
+fi
