@@ -21,8 +21,7 @@ else
 
   NEW_RELEASE=$(cat "$INPUT_VERSION_FILE")
   echo "::group::Creating Release v$NEW_RELEASE"
-    git fetch --prune --tags --quiet
-#    git fetch --prune --unshallow --tags --quiet
+    git fetch --prune --unshallow --tags --quiet
     LAST_RELEASE=$(git tag --sort=v:refname | sort | tail -1)
     if [[ -n "$LAST_RELEASE" ]]
     then
@@ -36,6 +35,8 @@ else
 
 #  gh release create "v$NEW_RELEASE"
   echo "::endgroup::"
+  set -x
+  echo "$INPUT_UPDATE_RELEASED_VERSION"
   if [[ "$INPUT_UPDATE_RELEASED_VERSION" == "true" ]]
   then
     IFS=. read -r -a array <<< "$NEW_RELEASE"
