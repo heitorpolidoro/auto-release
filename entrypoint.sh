@@ -33,9 +33,8 @@ else
       fi
     fi
 
-#  gh release create "v$NEW_RELEASE"
+  gh release create "v$NEW_RELEASE"
   echo "::endgroup::"
-  set -x
   if [[ "$INPUT_UPDATE_RELEASED_VERSIONS" == "true" ]]
   then
     IFS=. read -r -a array <<< "$NEW_RELEASE"
@@ -44,15 +43,21 @@ else
 
     if [[ -n $(git tag --list "$vX") ]]
     then
-      git tag --list "$vX"
+      echo "::group::Updating version $vX"
       remove_release $vX
+    else
+      echo "::group::Creating version $vX"
     fi
-#    gh release create "$vX"
+    gh release create "$vX"
 
     if [[ -n $(git tag --list "$vXY") ]]
     then
+      echo "::group::Updating version $vXY"
       remove_release $vXY
+    else
+      echo "::group::Creating version $vXY"
     fi
-#    gh release create "$vXY"
+    fi
+    gh release create "$vXY"
   fi
 fi
