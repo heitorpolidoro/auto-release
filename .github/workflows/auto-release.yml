@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create GitHub Release
-        uses: heitorpolidoro/auto-release@v1
+        uses: heitorpolidoro/auto-release@master
         with:
           personal_access_token: ${{ secrets.PAT }}
           allowed_users: heitorpolidoro
