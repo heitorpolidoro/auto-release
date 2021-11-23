@@ -7,7 +7,6 @@ remove_release()
    gh release delete $1 -y
 }
 
-
 BOLD='\x1b[1m'
 NORMAL="\x1b[0m"
 
