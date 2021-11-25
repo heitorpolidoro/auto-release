@@ -8,6 +8,8 @@ remove_release()
 }
 
 set -e
+gh auth login
+gh auth status
 echo "::group::Creating Release v$NEW_RELEASE"
 NEW_RELEASE=$(cat "$INPUT_VERSION_FILE")
   git fetch --prune --unshallow --tags --quiet
