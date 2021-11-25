@@ -2,8 +2,8 @@ name: "Auto Release based on version file"
 description: "Create a release automatically"
 
 branding:
-  color: blue
-  icon: tag
+  color: yellow
+  icon: package
 
 inputs:
   personal_access_token:
