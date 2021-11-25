@@ -1,16 +1,14 @@
 #!/bin/bash
 remove_release()
 {
-  set -x
   git tag -d $1
   git push --delete origin $1
   gh release delete $1 -y
 }
 
 set -e
-gh auth status
-echo "::group::Creating Release v$NEW_RELEASE"
 NEW_RELEASE=$(cat "$INPUT_VERSION_FILE")
+echo "::group::Creating Release v$NEW_RELEASE"
   git fetch --prune --unshallow --tags --quiet
   LAST_RELEASE=$(git tag --sort=v:refname | sort | tail -1)
   if [[ -n "$LAST_RELEASE" ]]
@@ -40,7 +38,7 @@ then
     echo "::group::Creating version $vX"
   fi
   gh release create "$vX"
-  VERSIONS="$VERSIONS,$X"
+  VERSIONS="$VERSIONS,${vX#v}"
   echo "::endgroup::"
 
   if [[ -n $(git tag --list "$vXY") ]]
@@ -51,7 +49,7 @@ then
     echo "::group::Creating version $vXY"
   fi
   gh release create "$vXY"
-  VERSIONS="$VERSIONS,$XY"
+  VERSIONS="$VERSIONS,${vXY#v}"
   echo "::endgroup::"
 fi
 echo "::set-output name=versions::${VERSIONS}"
