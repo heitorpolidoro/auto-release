@@ -8,8 +8,6 @@ remove_release()
 }
 
 set -e
-echo $GITHUB_TOKEN
-gh auth login
 gh auth status
 echo "::group::Creating Release v$NEW_RELEASE"
 NEW_RELEASE=$(cat "$INPUT_VERSION_FILE")
