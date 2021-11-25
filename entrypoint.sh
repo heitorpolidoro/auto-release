@@ -23,6 +23,7 @@ NEW_RELEASE=$(cat "$INPUT_VERSION_FILE")
     fi
   fi
 gh release create "v$NEW_RELEASE"
+VERSIONS="$NEW_RELEASE"
 echo "::endgroup::"
 
 if [[ "$INPUT_UPDATE_RELEASED_VERSIONS" == "true" ]]
@@ -39,6 +40,7 @@ then
     echo "::group::Creating version $vX"
   fi
   gh release create "$vX"
+  VERSIONS="$VERSIONS,$X"
   echo "::endgroup::"
 
   if [[ -n $(git tag --list "$vXY") ]]
@@ -49,5 +51,7 @@ then
     echo "::group::Creating version $vXY"
   fi
   gh release create "$vXY"
+  VERSIONS="$VERSIONS,$XY"
   echo "::endgroup::"
 fi
+echo "::set-output name=versions::${VERSIONS}"
