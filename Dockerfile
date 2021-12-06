@@ -4,7 +4,7 @@ RUN apk add --no-cache \
     bash \
     git \
     github-cli \
-    python3
+    python3 py3-pip
 
 COPY entrypoint.sh /entrypoint.sh
 
