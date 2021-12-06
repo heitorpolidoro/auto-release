@@ -17,11 +17,10 @@ get_new_release_version()
   fi
 }
 
-set -e
 NEW_RELEASE=$(get_new_release_version)
 echo "::group::Creating Release v$NEW_RELEASE"
   git fetch --prune --unshallow --tags --quiet
-  LAST_RELEASE=$(git tag --sort=v:refname | sort | tail -1)
+  LAST_RELEASE=$(git tag --sort=v:refname | tail -1)
   if [[ -n "$LAST_RELEASE" ]]
   then
     echo "Last Release: $LAST_RELEASE"
