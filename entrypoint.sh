@@ -6,8 +6,18 @@ remove_release()
   gh release delete $1 -y
 }
 
+get_new_release_version()
+{
+  if [[ "$INPUT_VERSION_FILE" == *__init__.py ]]; then
+    module=${INPUT_VERSION_FILE/\/__init__.py/}
+    python -c "import ${module};print(${module}.VERSION)"
+  else
+    cat "$INPUT_VERSION_FILE"
+  fi
+}
+
 set -e
-NEW_RELEASE=$(cat "$INPUT_VERSION_FILE")
+NEW_RELEASE=$(get_new_release_version)
 echo "::group::Creating Release v$NEW_RELEASE"
   git fetch --prune --unshallow --tags --quiet
   LAST_RELEASE=$(git tag --sort=v:refname | sort | tail -1)
