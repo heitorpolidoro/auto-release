@@ -3,7 +3,8 @@ FROM alpine
 RUN apk add --no-cache \
     bash \
     git \
-    github-cli
+    github-cli \
+    python3
 
 COPY entrypoint.sh /entrypoint.sh
 
