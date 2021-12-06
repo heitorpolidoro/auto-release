@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 remove_release()
 {
   git tag -d $1
