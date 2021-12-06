@@ -10,7 +10,7 @@ get_new_release_version()
 {
   if [[ "$INPUT_VERSION_FILE" == *__init__.py ]]; then
     module=${INPUT_VERSION_FILE/\/__init__.py/}
-    python -c "import ${module};print(${module}.VERSION)"
+    python3 -c "import ${module};print(${module}.VERSION)"
   else
     cat "$INPUT_VERSION_FILE"
   fi
