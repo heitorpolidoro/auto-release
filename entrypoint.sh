@@ -42,17 +42,6 @@ then
   vX="v${array[0]}"
   vXY=$(IFS=. ;echo "v${array[*]:0:2}")
 
-  if [[ -n $(git tag --list "$vX") ]]
-  then
-    echo "::group::Updating version $vX"
-    remove_release $vX
-  else
-    echo "::group::Creating version $vX"
-  fi
-  gh release create "$vX"
-  VERSIONS="$VERSIONS,$vX"
-  echo "::endgroup::"
-
   if [[ -n $(git tag --list "$vXY") ]]
   then
     echo "::group::Updating version $vXY"
@@ -62,6 +51,17 @@ then
   fi
   gh release create "$vXY"
   VERSIONS="$VERSIONS,$vXY"
+  echo "::endgroup::"
+
+  if [[ -n $(git tag --list "$vX") ]]
+  then
+    echo "::group::Updating version $vX"
+    remove_release $vX
+  else
+    echo "::group::Creating version $vX"
+  fi
+  gh release create "$vX"
+  VERSIONS="$VERSIONS,$vX"
   echo "::endgroup::"
 fi
 echo "::set-output name=versions::${VERSIONS}"
