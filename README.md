@@ -11,18 +11,47 @@ Action to create a release automatically
 
 ### Usage
 ```yaml
+name: Create GitHub Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Create GitHub Release
+        id: release
+        if: github.event_name == 'push' || github.event.pull_request.merged == true
         uses: heitorpolidoro/auto-release@v1
         with:
-          personal_access_token: ${{ secrets.PAT }}
+          update_released_versions: <true|false> # Default false
+          version_file: <filename|path/to/__init__.py> # Default: "VERSION"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
 Must have a file named `VERSION` in root with the project version in `MAJOR.MINOR.BUGFIX` format.
 #### Optional parameters
-```yaml
-allowed_users: List of github users allowed to trigger auto-release.
-version_file: Path to Version file
-update_released_versions: Update vX and vX.Y releases. (create or delete and recreate)
+- `update_released_versions`: Update vX and vX.Y releases. (create or delete and recreate)
+- `version_file`: Path to Version file. Can be a file containing just the version or an `__init__.py` file with VERSION 
+  defined. Both in `MAJOR.MINOR.BUGFIX` format  
+
+VERSION file
+```
+1.2.3
+```
+
+`__init__.py`
+```
+...
+VERSION = '1.2.3'
+...
 ```
