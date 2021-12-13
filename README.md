@@ -42,7 +42,7 @@ Must have a file named `VERSION` in root with the project version in `MAJOR.MINO
 #### Optional parameters
 - `update_released_versions`: Update vX and vX.Y releases. (create or delete and recreate)
 - `version_file`: Path to Version file. Can be a file containing just the version or an `__init__.py` file with VERSION 
-  defined. Both in `MAJOR.MINOR.BUGFIX` format  
+  defined. Both in `MAJOR.MINOR.BUGFIX` format
 
 VERSION file
 ```
@@ -55,3 +55,5 @@ VERSION file
 VERSION = '1.2.3'
 ...
 ```
+PS: GitHub actions user doesn't trigger another workflow, to trigger pass a valid user Personal Access Token to 
+`GITHUB_TOKEN` env
