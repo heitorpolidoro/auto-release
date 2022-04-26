@@ -18,6 +18,9 @@ get_new_release_version()
     cat "$INPUT_VERSION_FILE"
   fi
 }
+echo "::group::Workaround"
+git config --global --add safe.directory /github/workspace
+echo "::endgroup::"
 
 NEW_RELEASE=$(get_new_release_version)
 echo "::group::Creating Release v$NEW_RELEASE"
