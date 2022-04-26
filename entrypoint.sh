@@ -18,6 +18,13 @@ get_new_release_version()
     cat "$INPUT_VERSION_FILE"
   fi
 }
+
+if [[ "$(git log -1 --pretty=%B)" == *\[dont-release\]* ]]
+then
+  echo "Skipping release"
+  exit 0
+fi
+
 echo "::group::Workaround"
 git config --global --add safe.directory /github/workspace
 echo "::endgroup::"

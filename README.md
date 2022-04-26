@@ -54,5 +54,3 @@ VERSION file
 VERSION = '1.2.3'
 ...
 ```
-PS: GitHub actions user doesn't trigger another workflow, to trigger pass a valid user Personal Access Token to 
-`GITHUB_TOKEN` env
