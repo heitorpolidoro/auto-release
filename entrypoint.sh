@@ -1,4 +1,8 @@
 #!/bin/bash
+echo "::group::Workaround"
+git config --global --add safe.directory /github/workspace
+echo "::endgroup::"
+
 set -e
 
 remove_release()
@@ -24,10 +28,6 @@ then
   echo "Skipping release"
   exit 0
 fi
-
-echo "::group::Workaround"
-git config --global --add safe.directory /github/workspace
-echo "::endgroup::"
 
 NEW_RELEASE=$(get_new_release_version)
 echo "::group::Creating Release v$NEW_RELEASE"
