@@ -18,7 +18,7 @@ get_new_release_version()
     cat "$INPUT_VERSION_FILE"
   fi
 }
-
+git log -1 --pretty=%B
 if [[ "$(git log -1 --pretty=%B)" == *\[dont-release\]* ]]
 then
   echo "Skipping release"
