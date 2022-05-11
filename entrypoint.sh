@@ -15,9 +15,7 @@ remove_release()
 get_new_release_version()
 {
   if [[ "$INPUT_VERSION_FILE" == *__init__.py ]]; then
-    if [ -f requirements.txt ]; then pip install -r requirements.txt -q; fi
-    module=${INPUT_VERSION_FILE/\/__init__.py/}
-    python3 -c "import ${module};print(${module}.VERSION)"
+    grep VERSION "$INPUT_VERSION_FILE" | sed "s/VERSION *= *['\"]\(.*\)['\"]/\\1/"
   else
     cat "$INPUT_VERSION_FILE"
   fi

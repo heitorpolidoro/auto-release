@@ -1,10 +1,9 @@
 ## Actions Health
-[![Create Pull Request](https://github.com/heitorpolidoro/auto-release/actions/workflows/autocreate-pr.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/autocreate-pr.yml)
 
-[![Automerge Pull Request](https://github.com/heitorpolidoro/auto-release/actions/workflows/automerge-pr.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/automerge-pr.yml)
+[![Create Pull Request](https://github.com/heitorpolidoro/auto-release/actions/workflows/push_not_master.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/push_not_master.yml)
 
-[![Create GitHub Release](https://github.com/heitorpolidoro/auto-release/actions/workflows/auto-release.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/auto-release.yml)
+[![Pull Request](https://github.com/heitorpolidoro/auto-release/actions/workflows/pull_request.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/pull_request.yml)
 
-[![Sonar](https://github.com/heitorpolidoro/auto-release/actions/workflows/sonar.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/sonar.yml)
+[![Release](https://github.com/heitorpolidoro/auto-release/actions/workflows/push_master.yml/badge.svg)](https://github.com/heitorpolidoro/auto-release/actions/workflows/push_master.yml)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=heitorpolidoro_auto-release&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=heitorpolidoro_auto-release)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=heitorpolidoro_automerge-pr&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=heitorpolidoro_automerge-pr)
